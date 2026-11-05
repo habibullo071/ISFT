@@ -64,99 +64,24 @@
             </div>
         </section>
 
-        <!-- 3. REAL GOOGLE SHEET INTEGRATSIYALASHGAN FORMA -->
-        <section id="form" class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-slate-100">
-            <div class="max-w-2xl mx-auto text-center mb-8">
-                <span class="bg-emerald-100 text-emerald-600 text-xs font-bold uppercase px-3 py-1 rounded-full">Ochiq Eshiklar Kuni</span>
-                <h2 class="text-3xl font-bold text-slate-900 mt-2">Ro'yxatdan O'tish Formasi</h2>
-                <p class="text-slate-600 mt-2">Ma'lumotlarni to'ldiring va Google Sheet bazasiga kelib tushgan javoblarni ko'ring.</p>
-            </div>
+        <!-- 3. GOOGLE FORM VA GOOGLE SHEET TO'G'RIDAN-TO'G'RI ULANISHI -->
+        <section id="form" class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-slate-100 text-center space-y-6">
+            <span class="bg-emerald-100 text-emerald-600 text-xs font-bold uppercase px-3 py-1 rounded-full">Ochiq Eshiklar Kuni</span>
+            <h2 class="text-3xl font-bold text-slate-900">Ro'yxatdan O'tish So'rovnomasi</h2>
+            <p class="text-slate-600 max-w-xl mx-auto">
+                Tugmani bosing va Google Form orqali ma'lumotlaringizni kiriting. Barcha javoblar to'g'ridan-to'g'ri sizning **Google Sheet** bazangizga avtomatik ravishda yoziladi!
+            </p>
 
-            <form id="isftForm" class="max-w-2xl mx-auto space-y-6 bg-slate-50 p-8 rounded-xl border border-slate-200">
-                <!-- 1-savol -->
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Siz ochiq eshiklar kunida qatnashasizmi? *[cite: 4.2]</label>
-                    <div class="space-y-2">
-                        <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="radio" name="attendance" value="Yes" required class="text-indigo-600 focus:ring-indigo-500 h-4 w-4">
-                            <span class="text-slate-700">Ha (Yes)</span>
-                        </label>
-                        <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="radio" name="attendance" value="No" class="text-indigo-600 focus:ring-indigo-500 h-4 w-4">
-                            <span class="text-slate-700">Yo'q (No)</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- 2-savol -->
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Ism va familiyangiz hamda telefon raqamingiz *[cite: 4.2]</label>
-                    <input type="text" id="fullName" required placeholder="Masalan: Alisher Valiyev, +998901234567" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white">
-                </div>
-
-                <!-- 3-savol -->
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Qaysi ta'lim yoʻnalishiga qiziqasiz? *[cite: 4.2]</label>
-                    <select id="major" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white">
-                        <option value="" disabled selected>Yo'nalishni tanlang</option>
-                        <option value="Moliya va buxgalteriya">Moliya va buxgalteriya[cite: 4.2]</option>
-                        <option value="Axborot texnologiyalari (IT)">Axborot texnologiyalari (IT)</option>
-                        <option value="Xalqaro biznes va menejment">Xalqaro biznes va menejment</option>
-                        <option value="Boshqa yo'nalishlar">Boshqa yo'nalishlar</option>
-                    </select>
-                </div>
-
-                <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                    <button type="submit" id="submitBtn" class="w-full bg-indigo-900 hover:bg-indigo-800 text-white font-semibold py-3.5 rounded-xl shadow-lg transition duration-200">
-                        <i class="fas fa-paper-plane mr-2"></i>Ma'lumotlarni yuborish
-                    </button>
-                    <!-- Asl Google Sheet fayliga havola -->
-                    <a href="https://docs.google.com/spreadsheets/d/1Ps9sHg5LuoFROrff4CNX3bUuAKob3PSofnRLbZ5HYG4/edit?usp=sharing" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 rounded-xl shadow-lg transition duration-200 text-center flex items-center justify-center">
-                        <i class="fas fa-table mr-2"></i>Google Sheet (Haqiqiy link)
-                    </a>
-                </div>
-            </form>
-
-            <!-- Muvaffaqiyatli yuborildi xabari -->
-            <div id="successMessage" class="hidden max-w-2xl mx-auto mt-6 bg-emerald-50 border border-emerald-200 text-emerald-800 p-6 rounded-xl text-center space-y-3">
-                <i class="fas fa-check-circle text-4xl text-emerald-600"></i>
-                <h3 class="font-bold text-xl">Javobingiz Google Sheet-ga qo'shildi!</h3>
-                <p class="text-sm text-emerald-700">Ma'lumotlar real vaqt rejimida Google Sheet bazangizga saqlandi.</p>
-                <button onclick="resetForm()" class="mt-2 text-indigo-700 font-medium underline text-sm">Yana boshqa javob yuborish</button>
-            </div>
-
-            <!-- Interaktiv Google Sheet Natijalari Jadvali -->
-            <div class="max-w-4xl mx-auto mt-12 bg-slate-50 p-6 rounded-xl border border-slate-200">
-                <div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
-                    <h3 class="font-bold text-lg text-slate-800 flex items-center">
-                        <i class="fas fa-database text-indigo-600 mr-2"></i> Google Sheet Baza Javoblari (Live Preview)
-                    </h3>
-                    <a href="https://docs.google.com/spreadsheets/d/1Ps9sHg5LuoFROrff4CNX3bUuAKob3PSofnRLbZ5HYG4/edit?usp=sharing" target="_blank" class="bg-emerald-100 text-emerald-700 hover:bg-emerald-200 px-4 py-2 rounded-lg text-xs font-bold transition">
-                        <i class="fas fa-external-link-alt mr-1"></i> Asl Sheet'ni ochish
-                    </a>
-                </div>
-
-                <div class="overflow-x-auto bg-white rounded-lg border border-slate-200 shadow-sm">
-                    <table class="w-full text-left text-sm text-slate-600">
-                        <thead class="bg-slate-100 text-slate-700 uppercase text-xs font-semibold border-b border-slate-200">
-                            <tr>
-                                <th class="p-3.5">Отметка времени[cite: 4.2]</th>
-                                <th class="p-3.5">Qatnashasizmi[cite: 4.2]</th>
-                                <th class="p-3.5">Ism va Telefon[cite: 4.2]</th>
-                                <th class="p-3.5">Yo'nalish[cite: 4.2]</th>
-                            </tr>
-                        </thead>
-                        <tbody id="sheetTableBody" class="divide-y divide-slate-100">
-                            <!-- Google Sheet ichidagi dastlabki ma'lumotlar -->
-                            <tr class="hover:bg-slate-50 transition">
-                                <td class="p-3.5 font-mono text-xs">05.11.2026 10:00:48[cite: 4.2]</td>
-                                <td class="p-3.5"><span class="bg-rose-100 text-rose-700 px-2.5 py-0.5 rounded-full font-bold text-xs">No[cite: 4.2]</span></td>
-                                <td class="p-3.5 font-medium text-slate-900">Yes[cite: 4.2]</td>
-                                <td class="p-3.5">Moliya va buxgalteriya[cite: 4.2]</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+                <!-- GOOGLE FORM HAVOLASI (Shu yerga o'z Google Form linkingizni qo'yasiz) -->
+                <a href="SIZNING_GOOGLE_FORM_LINKINGIZ_BUYERGA_YOZILADI" target="_blank" class="bg-indigo-900 hover:bg-indigo-800 text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition duration-200 flex items-center justify-center text-lg">
+                    <i class="fas fa-wpforms mr-3"></i> So'rovnomani to'ldirish (Google Form)
+                </a>
+                
+                <!-- GOOGLE SHEET BAZASINI KO'RISH -->
+                <a href="https://docs.google.com/spreadsheets/d/1Ps9sHg5LuoFROrff4CNX3bUuAKob3PSofnRLbZ5HYG4/edit?usp=sharing" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition duration-200 flex items-center justify-center text-lg">
+                    <i class="fas fa-table mr-3"></i> Google Sheet Bazasini Ko'rish
+                </a>
             </div>
         </section>
 
@@ -168,68 +93,5 @@
             <p>&copy; 2026 ISFT Instituti. Barcha huquqlar himoyalangan.</p>
         </div>
     </footer>
-
-    <!-- JavaScript - Google Sheet ulanishi -->
-    <script>
-        // O'ZINGIZNING APPS SCRIPT WEB APP URL HAVOLANGIZNI SHU YERGA QO'YING:
-        const GOOGLE_APP_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
-
-        const form = document.getElementById('isftForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const successMessage = document.getElementById('successMessage');
-        const tableBody = document.getElementById('sheetTableBody');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Yuborilmoqda...';
-
-            const attendance = document.querySelector('input[name="attendance"]:checked').value;
-            const fullName = document.getElementById('fullName').value;
-            const major = document.getElementById('major').value;
-
-            const now = new Date();
-            const timestamp = now.toLocaleDateString('ru-RU') + ' ' + now.toLocaleTimeString('ru-RU');
-
-            const payload = { attendance, fullName, major };
-
-            // Google Apps Script API-ga yuborish
-            fetch(GOOGLE_APP_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            })
-            .then(() => {
-                // Sahifadagi jadvalga avtomatik yangi qator joylash
-                const newRow = document.createElement('tr');
-                newRow.className = "bg-indigo-50/70 hover:bg-indigo-50 transition";
-                newRow.innerHTML = `
-                    <td class="p-3.5 font-mono text-xs">${timestamp}</td>
-                    <td class="p-3.5"><span class="${attendance === 'Yes' ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'} px-2.5 py-0.5 rounded-full font-bold text-xs">${attendance}</span></td>
-                    <td class="p-3.5 font-medium text-slate-900">${fullName}</td>
-                    <td class="p-3.5">${major}</td>
-                `;
-                tableBody.insertBefore(newRow, tableBody.firstChild);
-
-                form.style.display = 'none';
-                successMessage.classList.remove('hidden');
-            })
-            .catch(error => {
-                alert('Xatolik yuz berdi: ' + error);
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Ma\'lumotlarni yuborish';
-            });
-        });
-
-        function resetForm() {
-            form.reset();
-            form.style.display = 'block';
-            successMessage.classList.add('hidden');
-        }
-    </script>
 </body>
 </html>
