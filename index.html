@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISFT Instituti — Interaktiv Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Header / Navigatsiya -->
+    <header class="bg-indigo-900 text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-rose-500 text-white p-2 rounded-lg font-bold text-xl">ISFT</div>
+                <span class="text-xl font-semibold tracking-wide">Institut Portali</span>
+            </div>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#about" class="hover:text-rose-400 transition">Haqida (Slide)</a>
+                <a href="#video" class="hover:text-rose-400 transition">Videolavha</a>
+                <a href="#form" class="hover:text-rose-400 transition">So'rovnoma (Form)</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-10 space-y-16">
+
+        <!-- 1. BOSH SAHIFA / SLIDE MA'LUMOTLARI -->
+        <section id="about" class="bg-white rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-2 gap-8 items-center p-8 md:p-12 border border-slate-100">
+            <div class="space-y-6">
+                <span class="bg-rose-100 text-rose-600 text-xs font-bold uppercase px-3 py-1 rounded-full">Taqdimot Ma'lumotlari</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">ISFT INSTITUTI</h1>
+                <p class="text-slate-600 leading-relaxed text-lg">
+                    ISFT instituti — zamonaviy va xalqaro standartlarga javob beradigan oliy ta'lim muassasasi[cite: 3.2]. Bu yerda siz moliya, iqtisodiyot, axborot texnologiyalari va boshqaruv yo'nalishlarida chuqurlashtirilgan bilim olasiz[cite: 3.2]. Kelajagingizni biz bilan birga quring![cite: 3.2]
+                </p>
+                <div class="flex space-x-4 pt-2">
+                    <a href="#form" class="bg-rose-600 hover:bg-rose-700 text-white font-medium px-6 py-3 rounded-xl shadow-lg transition">Ro'yxatdan o'tish</a>
+                    <a href="#video" class="border border-slate-300 hover:bg-slate-100 font-medium px-6 py-3 rounded-xl transition text-slate-700">Videoni ko'rish</a>
+                </div>
+            </div>
+            <div class="relative rounded-xl overflow-hidden shadow-lg h-72 md:h-80 bg-slate-200 flex items-center justify-center">
+                <!-- Tasviriy banner -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-900/80 to-rose-600/50 flex items-center justify-center text-center p-6 text-white">
+                    <div>
+                        <i class="fas fa-graduation-cap text-5xl mb-3 text-rose-300"></i>
+                        <h3 class="text-2xl font-bold">Sifatli Ta'lim & Kelajak</h3>
+                        <p class="text-sm text-slate-200 mt-1">Xalqaro standartlar asosidagi ta'lim maskani</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 2. VIDEO QISMI (YouTube asosida) -->
+        <section id="video" class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-slate-100">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="bg-indigo-100 text-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded-full">Ekskursiya va Tanishuv</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">ISFT Bilan Tanishuv</h2>
+                <p class="text-slate-600 mt-2">Institutimizning zamonaviy binolari, auditoriyalari va kutubxonalari bilan videorolik orqali tanishing.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl bg-black aspect-video relative">
+                <!-- YouTube Embed Video -->
+                <iframe class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/a67Ei0c3l6M" title="ISFT BILAN TANISHUV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </section>
+
+
+        <!-- 3. GOOGLE FORM / SHEET INTEGRATSIYALASHGAN INTERAKTIV SO'ROVNOMA -->
+        <section id="form" class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-slate-100">
+            <div class="max-w-2xl mx-auto text-center mb-10">
+                <span class="bg-emerald-100 text-emerald-600 text-xs font-bold uppercase px-3 py-1 rounded-full">Ochiq Eshiklar Kuni</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">Ro'yxatdan O'tish Formasi</h2>
+                <p class="text-slate-600 mt-2">Ma'lumotlaringiz Google Sheet bazasiga yuborilishiga o'xshash interaktiv so'rovnoma.</p>
+            </div>
+
+            <form id="isftForm" class="max-w-2xl mx-auto space-y-6 bg-slate-50 p-8 rounded-xl border border-slate-200">
+                
+                <!-- 1-savol -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Siz ochiq eshiklar kunida qatnashasizmi? *</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="attendance" value="Ha" required class="text-indigo-600 focus:ring-indigo-500 h-4 w-4">
+                            <span class="text-slate-700">Ha, albatta qatnashaman</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="attendance" value="Yo'q" class="text-indigo-600 focus:ring-indigo-500 h-4 w-4">
+                            <span class="text-slate-700">Afsuski, qatnasha olmayman</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 2-savol -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Ism va familiyangiz hamda telefon raqamingiz *</label>
+                    <input type="text" id="fullName" required placeholder="Masalan: Alisher Valiyev, +998901234567" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white">
+                </div>
+
+                <!-- 3-savol -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Qaysi ta'lim yoʻnalishiga qiziqasiz? *</label>
+                    <select id="major" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white">
+                        <option value="" disabled selected>Yo'nalishni tanlang</option>
+                        <option value="Moliya va buxgalteriya">Moliya va buxgalteriya</option>
+                        <option value="Axborot texnologiyalari (IT)">Axborot texnologiyalari (IT)</option>
+                        <option value="Xalqaro biznes va menejment">Xalqaro biznes va menejment</option>
+                        <option value="Boshqa yo'nalishlar">Boshqa yo'nalishlar</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full bg-indigo-900 hover:bg-indigo-800 text-white font-semibold py-3.5 rounded-xl shadow-lg transition duration-200">
+                    Ma'lumotlarni yuborish
+                </button>
+            </form>
+
+            <!-- Muvaffaqiyatli xabar (Javob yuborilgandan so'ng chiqadi) -->
+            <div id="successMessage" class="hidden max-w-2xl mx-auto mt-6 bg-emerald-50 border border-emerald-200 text-emerald-800 p-6 rounded-xl text-center space-y-2">
+                <i class="fas fa-check-circle text-3xl text-emerald-600"></i>
+                <h3 class="font-bold text-lg">Javobingiz muvaffaqiyatli qabul qilindi!</h3>
+                <p class="text-sm text-emerald-700">Ma'lumotlaringiz Google Sheet bazasiga yozildi va tez orada siz bilan bog'lanamiz.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 mt-20">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p>&copy; 2026 ISFT Instituti. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript - Interaktivlik va Formani ishlatish -->
+    <script>
+        const form = document.getElementById('isftForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ma'lumotlarni yig'ish (Google Sheet ga simulyatsiya qilib yuborish)
+            const attendance = document.querySelector('input[name="attendance"]:checked').value;
+            const fullName = document.getElementById('fullName').value;
+            const major = document.getElementById('major').value;
+
+            console.log("Yuborilgan ma'lumotlar:", { attendance, fullName, major });
+
+            // Formani yashirib, muvaffaqiyatli xabarni chiqarish
+            form.style.display = 'none';
+            successMessage.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
