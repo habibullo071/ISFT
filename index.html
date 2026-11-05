@@ -110,22 +110,20 @@
                     <button type="submit" id="submitBtn" class="w-full bg-indigo-900 hover:bg-indigo-800 text-white font-semibold py-3.5 rounded-xl shadow-lg transition duration-200">
                         <i class="fas fa-paper-plane mr-2"></i>Ma'lumotlarni yuborish
                     </button>
-                    <!-- Tugma: Google Sheet-ga o'tish -->
                     <a href="https://docs.google.com/spreadsheets/d/1Ps9sHg5LuoFROrff4CNX3bUuAKob3PSofnRLbZ5HYG4/edit?usp=sharing" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 rounded-xl shadow-lg transition duration-200 text-center flex items-center justify-center">
                         <i class="fas fa-table mr-2"></i>Google Sheet (Haqiqiy link)
                     </a>
                 </div>
             </form>
 
-            <!-- Muvaffaqiyatli yuborildi habari -->
             <div id="successMessage" class="hidden max-w-2xl mx-auto mt-6 bg-emerald-50 border border-emerald-200 text-emerald-800 p-6 rounded-xl text-center space-y-3">
                 <i class="fas fa-check-circle text-4xl text-emerald-600"></i>
-                <h3 class="font-bold text-xl">Javobingiz muvaffaqiyatli qabul qilindi!</h3>
-                <p class="text-sm text-emerald-700">Ma'lumotlar Google Sheet bazasiga saqlandi hamda quyidagi jadvalda yangilandi.</p>
+                <h3 class="font-bold text-xl">Javobingiz Google Sheet-ga qo'shildi!</h3>
+                <p class="text-sm text-emerald-700">Ma'lumotlar real vaqt rejimida muvaffaqiyatli saqlandi.</p>
                 <button onclick="resetForm()" class="mt-2 text-indigo-700 font-medium underline text-sm">Yana boshqa javob yuborish</button>
             </div>
 
-            <!-- Interaktiv Google Sheet Natijalari Jadvali (Real vaqtda yangilanishi uchun) -->
+            <!-- Interaktiv Google Sheet Natijalari Jadvali -->
             <div class="max-w-4xl mx-auto mt-12 bg-slate-50 p-6 rounded-xl border border-slate-200">
                 <div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
                     <h3 class="font-bold text-lg text-slate-800 flex items-center">
@@ -147,7 +145,6 @@
                             </tr>
                         </thead>
                         <tbody id="sheetTableBody" class="divide-y divide-slate-100">
-                            <!-- Google Sheet ichida mavjud bo'lgan ilk ma'lumot -->
                             <tr class="hover:bg-slate-50 transition">
                                 <td class="p-3.5 font-mono text-xs">05.11.2026 10:00:48</td>
                                 <td class="p-3.5"><span class="bg-emerald-100 text-emerald-700 px-2.5 py-0.5 rounded-full font-bold text-xs">Yes</span></td>
@@ -162,16 +159,15 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 py-8 mt-20">
         <div class="container mx-auto px-6 text-center text-sm">
             <p>&copy; 2026 ISFT Instituti. Barcha huquqlar himoyalangan.</p>
         </div>
     </footer>
 
-    <!-- JavaScript - Google Sheet Apps Script integratsiyasi va jadvalni jonli yangilash -->
+    <!-- JavaScript Integratsiyasi -->
     <script>
-        // Google Apps Script yaratganingizdan so'ng chiqqan Web App URL-ni shu yerga qo'ying:
+        // SHU YERGA APPS SCRIPT URL HAVOLASINI QO'YING
         const GOOGLE_APP_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
 
         const form = document.getElementById('isftForm');
@@ -189,13 +185,12 @@
             const fullName = document.getElementById('fullName').value;
             const major = document.getElementById('major').value;
 
-            // Bugungi sana va vaqt
             const now = new Date();
             const timestamp = now.toLocaleDateString('ru-RU') + ' ' + now.toLocaleTimeString('ru-RU');
 
             const payload = { attendance, fullName, major };
 
-            // 1. Google Sheet Apps Script API-ga ma'lumotni yuborish
+            // Google Sheet-ga ma'lumot jo'natish
             fetch(GOOGLE_APP_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -203,7 +198,7 @@
                 body: JSON.stringify(payload)
             })
             .then(() => {
-                // 2. Sahifadagi jadvalga yangi qatorni ekranda darhol qo'shish (Live Update)
+                // Ekrondagi jadvalga avtomatik yangi qator qo'shish
                 const newRow = document.createElement('tr');
                 newRow.className = "bg-indigo-50/70 hover:bg-indigo-50 transition";
                 newRow.innerHTML = `
@@ -214,7 +209,6 @@
                 `;
                 tableBody.insertBefore(newRow, tableBody.firstChild);
 
-                // Formani yashirish hamda muvaffaqiyat xabarini ko'rsatish
                 form.style.display = 'none';
                 successMessage.classList.remove('hidden');
             })
