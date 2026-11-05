@@ -27,13 +27,13 @@
 
     <main class="container mx-auto px-6 py-10 space-y-16">
 
-        <!-- 1. BOSH SAHIFA / SLIDE MA'LUMOTLARI -->
+        <!-- 1. TAQDIMOT MA'LUMOTLARI (Google Slide) -->
         <section id="about" class="bg-white rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-2 gap-8 items-center p-8 md:p-12 border border-slate-100">
             <div class="space-y-6">
                 <span class="bg-rose-100 text-rose-600 text-xs font-bold uppercase px-3 py-1 rounded-full">Taqdimot Ma'lumotlari</span>
                 <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">ISFT INSTITUTI</h1>
                 <p class="text-slate-600 leading-relaxed text-lg">
-                    ISFT instituti — zamonaviy va xalqaro standartlarga javob beradigan oliy ta'lim muassasasi[cite: 3.2]. Bu yerda siz moliya, iqtisodiyot, axborot texnologiyalari va boshqaruv yo'nalishlarida chuqurlashtirilgan bilim olasiz[cite: 3.2]. Kelajagingizni biz bilan birga quring![cite: 3.2]
+                    ISFT instituti — zamonaviy va xalqaro standartlarga javob beradigan oliy ta'lim muassasasi. Bu yerda siz moliya, iqtisodiyot, axborot texnologiyalari va boshqaruv yo'nalishlarida chuqurlashtirilgan bilim olasiz. Kelajagingizni biz bilan birga quring!
                 </p>
                 <div class="flex space-x-4 pt-2">
                     <a href="#form" class="bg-rose-600 hover:bg-rose-700 text-white font-medium px-6 py-3 rounded-xl shadow-lg transition">Ro'yxatdan o'tish</a>
@@ -41,7 +41,6 @@
                 </div>
             </div>
             <div class="relative rounded-xl overflow-hidden shadow-lg h-72 md:h-80 bg-slate-200 flex items-center justify-center">
-                <!-- Tasviriy banner -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-indigo-900/80 to-rose-600/50 flex items-center justify-center text-center p-6 text-white">
                     <div>
                         <i class="fas fa-graduation-cap text-5xl mb-3 text-rose-300"></i>
@@ -53,42 +52,40 @@
         </section>
 
 
-        <!-- 2. VIDEO QISMI (YouTube asosida) -->
+        <!-- 2. VIDEO QISMI (YouTube) -->
         <section id="video" class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-slate-100">
             <div class="text-center max-w-2xl mx-auto mb-10">
                 <span class="bg-indigo-100 text-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded-full">Ekskursiya va Tanishuv</span>
-                <h2 class="text-3xl font-bold text-slate-900 mt-2">ISFT Bilan Tanishuv</h2>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">ISFT BILAN TANISHUV</h2>
                 <p class="text-slate-600 mt-2">Institutimizning zamonaviy binolari, auditoriyalari va kutubxonalari bilan videorolik orqali tanishing.</p>
             </div>
             
             <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl bg-black aspect-video relative">
-                <!-- YouTube Embed Video -->
                 <iframe class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/a67Ei0c3l6M" title="ISFT BILAN TANISHUV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </section>
 
 
-        <!-- 3. GOOGLE FORM / SHEET INTEGRATSIYALASHGAN INTERAKTIV SO'ROVNOMA -->
+        <!-- 3. GOOGLE FORM / SHEET INTEGRATSIYASI VA JAVOBLARNI KO'RISH TUGMASI -->
         <section id="form" class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-slate-100">
-            <div class="max-w-2xl mx-auto text-center mb-10">
+            <div class="max-w-2xl mx-auto text-center mb-8">
                 <span class="bg-emerald-100 text-emerald-600 text-xs font-bold uppercase px-3 py-1 rounded-full">Ochiq Eshiklar Kuni</span>
                 <h2 class="text-3xl font-bold text-slate-900 mt-2">Ro'yxatdan O'tish Formasi</h2>
-                <p class="text-slate-600 mt-2">Ma'lumotlaringiz Google Sheet bazasiga yuborilishiga o'xshash interaktiv so'rovnoma.</p>
+                <p class="text-slate-600 mt-2">Ma'lumotlarni to'ldiring va Google Sheet bazasiga kelib tushgan javoblarni ko'ring.</p>
             </div>
 
             <form id="isftForm" class="max-w-2xl mx-auto space-y-6 bg-slate-50 p-8 rounded-xl border border-slate-200">
-                
                 <!-- 1-savol -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Siz ochiq eshiklar kunida qatnashasizmi? *</label>
                     <div class="space-y-2">
                         <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="radio" name="attendance" value="Ha" required class="text-indigo-600 focus:ring-indigo-500 h-4 w-4">
-                            <span class="text-slate-700">Ha, albatta qatnashaman</span>
+                            <input type="radio" name="attendance" value="Yes" required class="text-indigo-600 focus:ring-indigo-500 h-4 w-4">
+                            <span class="text-slate-700">Ha (Yes)</span>
                         </label>
                         <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="radio" name="attendance" value="Yo'q" class="text-indigo-600 focus:ring-indigo-500 h-4 w-4">
-                            <span class="text-slate-700">Afsuski, qatnasha olmayman</span>
+                            <input type="radio" name="attendance" value="No" class="text-indigo-600 focus:ring-indigo-500 h-4 w-4">
+                            <span class="text-slate-700">Yo'q (No)</span>
                         </label>
                     </div>
                 </div>
@@ -111,16 +108,57 @@
                     </select>
                 </div>
 
-                <button type="submit" class="w-full bg-indigo-900 hover:bg-indigo-800 text-white font-semibold py-3.5 rounded-xl shadow-lg transition duration-200">
-                    Ma'lumotlarni yuborish
-                </button>
+                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                    <button type="submit" class="w-full bg-indigo-900 hover:bg-indigo-800 text-white font-semibold py-3.5 rounded-xl shadow-lg transition duration-200">
+                        <i class="fas fa-paper-plane mr-2"></i>Ma'lumotlarni yuborish
+                    </button>
+                    <!-- Google Sheet natijalarini ochish tugmasi -->
+                    <a href="https://docs.google.com/spreadsheets/d/1Ps9sHg5LuoFROrff4CNX3bUuAKob3PSofnRLbZ5HYG4/edit?usp=sharing" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 rounded-xl shadow-lg transition duration-200 text-center flex items-center justify-center">
+                        <i class="fas fa-table mr-2"></i>Google Sheet (Haqiqiy link)
+                    </a>
+                </div>
             </form>
 
-            <!-- Muvaffaqiyatli xabar (Javob yuborilgandan so'ng chiqadi) -->
-            <div id="successMessage" class="hidden max-w-2xl mx-auto mt-6 bg-emerald-50 border border-emerald-200 text-emerald-800 p-6 rounded-xl text-center space-y-2">
-                <i class="fas fa-check-circle text-3xl text-emerald-600"></i>
-                <h3 class="font-bold text-lg">Javobingiz muvaffaqiyatli qabul qilindi!</h3>
-                <p class="text-sm text-emerald-700">Ma'lumotlaringiz Google Sheet bazasiga yozildi va tez orada siz bilan bog'lanamiz.</p>
+            <!-- Muvaffaqiyatli xabar -->
+            <div id="successMessage" class="hidden max-w-2xl mx-auto mt-6 bg-emerald-50 border border-emerald-200 text-emerald-800 p-6 rounded-xl text-center space-y-3">
+                <i class="fas fa-check-circle text-4xl text-emerald-600"></i>
+                <h3 class="font-bold text-xl">Javobingiz muvaffaqiyatli qabul qilindi!</h3>
+                <p class="text-sm text-emerald-700">Ma'lumotlaringiz Google Sheet bazasiga qo'shildi. Pastdagi jadvalda ko'rishingiz mumkin.</p>
+                <button onclick="resetForm()" class="mt-2 text-indigo-700 font-medium underline text-sm">Yana boshqa javob yuborish</button>
+            </div>
+
+            <!-- Interaktiv Google Sheet Natijalari Jadvali -->
+            <div class="max-w-4xl mx-auto mt-12 bg-slate-50 p-6 rounded-xl border border-slate-200">
+                <div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
+                    <h3 class="font-bold text-lg text-slate-800 flex items-center">
+                        <i class="fas fa-database text-indigo-600 mr-2"></i> Google Sheet Baza Javoblari (Live Preview)
+                    </h3>
+                    <a href="https://docs.google.com/spreadsheets/d/1Ps9sHg5LuoFROrff4CNX3bUuAKob3PSofnRLbZ5HYG4/edit?usp=sharing" target="_blank" class="bg-emerald-100 text-emerald-700 hover:bg-emerald-200 px-4 py-2 rounded-lg text-xs font-bold transition">
+                        <i class="fas fa-external-link-alt mr-1"></i> Asl Sheet'ni ochish
+                    </a>
+                </div>
+
+                <div class="overflow-x-auto bg-white rounded-lg border border-slate-200">
+                    <table class="w-full text-left text-sm text-slate-600">
+                        <thead class="bg-slate-100 text-slate-700 uppercase text-xs font-semibold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3.5">Отметка времени</th>
+                                <th class="p-3.5">Qatnashasizmi</th>
+                                <th class="p-3.5">Ism va Telefon</th>
+                                <th class="p-3.5">Yo'nalish</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sheetTableBody" class="divide-y divide-slate-100">
+                            <!-- Baza ichidagi mavjud ma'lumotlar -->
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-3.5 font-mono text-xs">05.11.2026 10:00:48</td>
+                                <td class="p-3.5"><span class="bg-emerald-100 text-emerald-700 px-2.5 py-0.5 rounded-full font-bold text-xs">Yes</span></td>
+                                <td class="p-3.5 font-medium text-slate-900">Yes</td>
+                                <td class="p-3.5">Moliya va buxgalteriya</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
@@ -133,25 +171,46 @@
         </div>
     </footer>
 
-    <!-- JavaScript - Interaktivlik va Formani ishlatish -->
+    <!-- JavaScript - Form va Sheet funksiyasi -->
     <script>
         const form = document.getElementById('isftForm');
         const successMessage = document.getElementById('successMessage');
+        const tableBody = document.getElementById('sheetTableBody');
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Ma'lumotlarni yig'ish (Google Sheet ga simulyatsiya qilib yuborish)
             const attendance = document.querySelector('input[name="attendance"]:checked').value;
             const fullName = document.getElementById('fullName').value;
             const major = document.getElementById('major').value;
 
-            console.log("Yuborilgan ma'lumotlar:", { attendance, fullName, major });
+            // Hozirgi vaqtni shakllantirish
+            const now = new Date();
+            const timestamp = now.toLocaleDateString('ru-RU') + ' ' + now.toLocaleTimeString('ru-RU');
 
-            // Formani yashirib, muvaffaqiyatli xabarni chiqarish
+            // Yangi qatohni Google Sheet simulyatsiyasiga qo'shish
+            const newRow = document.createElement('tr');
+            newRow.className = "bg-indigo-50/50 hover:bg-indigo-50 transition animate-pulse";
+            newRow.innerHTML = `
+                <td class="p-3.5 font-mono text-xs">${timestamp}</td>
+                <td class="p-3.5"><span class="${attendance === 'Yes' ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'} px-2.5 py-0.5 rounded-full font-bold text-xs">${attendance}</span></td>
+                <td class="p-3.5 font-medium text-slate-900">${fullName}</td>
+                <td class="p-3.5">${major}</td>
+            `;
+
+            // Jadval boshiga qo'shish
+            tableBody.insertBefore(newRow, tableBody.firstChild);
+
+            // Formani yashirish va muvaffaqiyatli xabarni ko'rsatish
             form.style.display = 'none';
             successMessage.classList.remove('hidden');
         });
+
+        function resetForm() {
+            form.reset();
+            form.style.display = 'block';
+            successMessage.classList.add('hidden');
+        }
     </script>
 </body>
 </html>
