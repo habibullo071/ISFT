@@ -51,7 +51,6 @@
             </div>
         </section>
 
-
         <!-- 2. VIDEO QISMI (YouTube) -->
         <section id="video" class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-slate-100">
             <div class="text-center max-w-2xl mx-auto mb-10">
@@ -65,8 +64,7 @@
             </div>
         </section>
 
-
-        <!-- 3. GOOGLE FORM / SHEET INTEGRATSIYASI VA JAVOBLARNI KO'RISH TUGMASI -->
+        <!-- 3. FORMA VA GOOGLE SHEET INTEGRATSIYASI -->
         <section id="form" class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-slate-100">
             <div class="max-w-2xl mx-auto text-center mb-8">
                 <span class="bg-emerald-100 text-emerald-600 text-xs font-bold uppercase px-3 py-1 rounded-full">Ochiq Eshiklar Kuni</span>
@@ -109,25 +107,25 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                    <button type="submit" class="w-full bg-indigo-900 hover:bg-indigo-800 text-white font-semibold py-3.5 rounded-xl shadow-lg transition duration-200">
+                    <button type="submit" id="submitBtn" class="w-full bg-indigo-900 hover:bg-indigo-800 text-white font-semibold py-3.5 rounded-xl shadow-lg transition duration-200">
                         <i class="fas fa-paper-plane mr-2"></i>Ma'lumotlarni yuborish
                     </button>
-                    <!-- Google Sheet natijalarini ochish tugmasi -->
+                    <!-- Tugma: Google Sheet-ga o'tish -->
                     <a href="https://docs.google.com/spreadsheets/d/1Ps9sHg5LuoFROrff4CNX3bUuAKob3PSofnRLbZ5HYG4/edit?usp=sharing" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 rounded-xl shadow-lg transition duration-200 text-center flex items-center justify-center">
                         <i class="fas fa-table mr-2"></i>Google Sheet (Haqiqiy link)
                     </a>
                 </div>
             </form>
 
-            <!-- Muvaffaqiyatli xabar -->
+            <!-- Muvaffaqiyatli yuborildi habari -->
             <div id="successMessage" class="hidden max-w-2xl mx-auto mt-6 bg-emerald-50 border border-emerald-200 text-emerald-800 p-6 rounded-xl text-center space-y-3">
                 <i class="fas fa-check-circle text-4xl text-emerald-600"></i>
                 <h3 class="font-bold text-xl">Javobingiz muvaffaqiyatli qabul qilindi!</h3>
-                <p class="text-sm text-emerald-700">Ma'lumotlaringiz Google Sheet bazasiga qo'shildi. Pastdagi jadvalda ko'rishingiz mumkin.</p>
+                <p class="text-sm text-emerald-700">Ma'lumotlar Google Sheet bazasiga saqlandi hamda quyidagi jadvalda yangilandi.</p>
                 <button onclick="resetForm()" class="mt-2 text-indigo-700 font-medium underline text-sm">Yana boshqa javob yuborish</button>
             </div>
 
-            <!-- Interaktiv Google Sheet Natijalari Jadvali -->
+            <!-- Interaktiv Google Sheet Natijalari Jadvali (Real vaqtda yangilanishi uchun) -->
             <div class="max-w-4xl mx-auto mt-12 bg-slate-50 p-6 rounded-xl border border-slate-200">
                 <div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
                     <h3 class="font-bold text-lg text-slate-800 flex items-center">
@@ -138,7 +136,7 @@
                     </a>
                 </div>
 
-                <div class="overflow-x-auto bg-white rounded-lg border border-slate-200">
+                <div class="overflow-x-auto bg-white rounded-lg border border-slate-200 shadow-sm">
                     <table class="w-full text-left text-sm text-slate-600">
                         <thead class="bg-slate-100 text-slate-700 uppercase text-xs font-semibold border-b border-slate-200">
                             <tr>
@@ -149,7 +147,7 @@
                             </tr>
                         </thead>
                         <tbody id="sheetTableBody" class="divide-y divide-slate-100">
-                            <!-- Baza ichidagi mavjud ma'lumotlar -->
+                            <!-- Google Sheet ichida mavjud bo'lgan ilk ma'lumot -->
                             <tr class="hover:bg-slate-50 transition">
                                 <td class="p-3.5 font-mono text-xs">05.11.2026 10:00:48</td>
                                 <td class="p-3.5"><span class="bg-emerald-100 text-emerald-700 px-2.5 py-0.5 rounded-full font-bold text-xs">Yes</span></td>
@@ -171,39 +169,62 @@
         </div>
     </footer>
 
-    <!-- JavaScript - Form va Sheet funksiyasi -->
+    <!-- JavaScript - Google Sheet Apps Script integratsiyasi va jadvalni jonli yangilash -->
     <script>
+        // Google Apps Script yaratganingizdan so'ng chiqqan Web App URL-ni shu yerga qo'ying:
+        const GOOGLE_APP_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
         const form = document.getElementById('isftForm');
+        const submitBtn = document.getElementById('submitBtn');
         const successMessage = document.getElementById('successMessage');
         const tableBody = document.getElementById('sheetTableBody');
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Yuborilmoqda...';
+
             const attendance = document.querySelector('input[name="attendance"]:checked').value;
             const fullName = document.getElementById('fullName').value;
             const major = document.getElementById('major').value;
 
-            // Hozirgi vaqtni shakllantirish
+            // Bugungi sana va vaqt
             const now = new Date();
             const timestamp = now.toLocaleDateString('ru-RU') + ' ' + now.toLocaleTimeString('ru-RU');
 
-            // Yangi qatohni Google Sheet simulyatsiyasiga qo'shish
-            const newRow = document.createElement('tr');
-            newRow.className = "bg-indigo-50/50 hover:bg-indigo-50 transition animate-pulse";
-            newRow.innerHTML = `
-                <td class="p-3.5 font-mono text-xs">${timestamp}</td>
-                <td class="p-3.5"><span class="${attendance === 'Yes' ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'} px-2.5 py-0.5 rounded-full font-bold text-xs">${attendance}</span></td>
-                <td class="p-3.5 font-medium text-slate-900">${fullName}</td>
-                <td class="p-3.5">${major}</td>
-            `;
+            const payload = { attendance, fullName, major };
 
-            // Jadval boshiga qo'shish
-            tableBody.insertBefore(newRow, tableBody.firstChild);
+            // 1. Google Sheet Apps Script API-ga ma'lumotni yuborish
+            fetch(GOOGLE_APP_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                // 2. Sahifadagi jadvalga yangi qatorni ekranda darhol qo'shish (Live Update)
+                const newRow = document.createElement('tr');
+                newRow.className = "bg-indigo-50/70 hover:bg-indigo-50 transition";
+                newRow.innerHTML = `
+                    <td class="p-3.5 font-mono text-xs">${timestamp}</td>
+                    <td class="p-3.5"><span class="${attendance === 'Yes' ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'} px-2.5 py-0.5 rounded-full font-bold text-xs">${attendance}</span></td>
+                    <td class="p-3.5 font-medium text-slate-900">${fullName}</td>
+                    <td class="p-3.5">${major}</td>
+                `;
+                tableBody.insertBefore(newRow, tableBody.firstChild);
 
-            // Formani yashirish va muvaffaqiyatli xabarni ko'rsatish
-            form.style.display = 'none';
-            successMessage.classList.remove('hidden');
+                // Formani yashirish hamda muvaffaqiyat xabarini ko'rsatish
+                form.style.display = 'none';
+                successMessage.classList.remove('hidden');
+            })
+            .catch(error => {
+                alert('Xatolik yuz berdi: ' + error);
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Ma\'lumotlarni yuborish';
+            });
         });
 
         function resetForm() {
